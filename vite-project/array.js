@@ -2,6 +2,7 @@ const emojis = [
   {
     answer: "It's raining cats and dogs",
     id: 0,
+    img: "raining cats and dogs.png",
   },
   {
     answer: "Money don't grow on trees",
