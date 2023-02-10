@@ -1,45 +1,33 @@
-const emojis = [
+const questions = [
   {
     answer: "It's raining cats and dogs",
-    id: 0,
     img: "raining cats and dogs.png",
+    emojis: "☔" + "🌧️" + "🐱" + "🐱" + "🐶" + "🐶",
   },
   {
     answer: "Money don't grow on trees",
-    id: 1,
+    emojis: "💰" + "💸" + "❌" + "🌱" + "🌳",
   },
   {
     answer: "Break a leg",
-    id: 2,
-  },
-  {
-    answer: "A blessing in disguise",
-    id: 3,
+    emojis: "🔨" + "🦵" + "🦴",
   },
   {
     answer: "No pain no gain",
-    id: 4,
-  },
-  {
-    answer: "A picture is worth a thousand words",
-    id: 5,
+    emojis: "❌" + "🤕" + "🏋️‍♀️" + "❌" + "💪" + "💪",
   },
   {
     answer: "Add insult to injury",
-    id: 6,
+    emojis: "➕" + "🤬" + "➡️" + "🤕" + "🩸",
   },
   {
     answer: "It's a piece of cake",
-    id: 7,
-  },
-  {
-    answer: "Kill two birds with a stone",
-    id: 8,
+    emojis: "🍰",
   },
   {
     answer: "Once in a blue moon",
-    id: 9,
+    emojis: "1️" + "🟦" + "🌑",
   },
 ];
 
-export { emojis };
+export { questions };

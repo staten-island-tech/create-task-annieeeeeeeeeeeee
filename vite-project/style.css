@@ -19,3 +19,41 @@ body {
   text-align: center;
   color: #ffdb59;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 30vh;
+  padding-bottom: 7rem;
+  padding-top: 5rem;
+}
+
+#userInput {
+  width: 50rem;
+  height: 5rem;
+  border-style: none;
+  border-radius: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#guess-button {
+  align-items: center;
+}
+
+#picture-display {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  width: 100rem;
+  margin: auto;
+  border-radius: 20rem;
+  margin-top: 3.5rem;
+}
+#emojis {
+  font-size: 7rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
