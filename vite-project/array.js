@@ -1,32 +1,44 @@
 const questions = [
   {
-    answer: "It's raining cats and dogs",
+    answer: "it's raining cats and dogs",
     img: "raining cats and dogs.png",
     emojis: "☔" + "🌧️" + "🐱" + "🐱" + "🐶" + "🐶",
   },
   {
-    answer: "Money don't grow on trees",
+    answer: "money don't grow on trees",
     emojis: "💰" + "💸" + "❌" + "🌱" + "🌳",
   },
   {
-    answer: "Break a leg",
+    answer: "break a leg",
     emojis: "🔨" + "🦵" + "🦴",
   },
   {
-    answer: "No pain no gain",
+    answer: "no pain no gain",
     emojis: "❌" + "🤕" + "🏋️‍♀️" + "❌" + "💪" + "💪",
   },
   {
-    answer: "Add insult to injury",
+    answer: "add insult to injury",
     emojis: "➕" + "🤬" + "➡️" + "🤕" + "🩸",
   },
   {
-    answer: "It's a piece of cake",
+    answer: "it's a piece of cake",
     emojis: "🍰",
   },
   {
-    answer: "Once in a blue moon",
+    answer: "once in a blue moon",
     emojis: "1️" + "🟦" + "🌑",
+  },
+  {
+    answer: "time flies when you're having fun",
+    emojis: "⏱️" + "✈️" + "😝",
+  },
+  {
+    answer: "raincheck",
+    emojis: "🌧️" + "✔️",
+  },
+  {
+    answer: "an eye for an eye, a tooth for a tooth",
+    emojis: "👁️" + "4️" + "👁️" + "4️" + "🦷" + "🦷",
   },
 ];
 
