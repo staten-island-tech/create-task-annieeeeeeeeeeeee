@@ -8,35 +8,17 @@ const DOMSelectors = {
   score: document.getElementById("score-number"),
 };
 
-/* function HTML(emojis) {
-  DOMSelectors.emojiDisplay.insertAdjacentHTML(
-    "afterbegin",
-    `
-<img src="${emojis.img}" class="img"/>
-  `
-  );
-}
- */
-/* function score() {
-  let score = 0;
-  score++;
-  console.log(score);
-}
-score();
- */
-
 let score = 0;
-let question = Math.floor(Math.random() * questions.length);
-let emojiQ = questions[question].emojis;
-let answer = questions[question].answer;
+let index = 0;
+console.log(index);
+let emojiQ = questions[index].emojis;
+let answer = questions[index].answer;
 
 function start() {
   next();
-  //genQ();
   checkAnswer();
-  questions.splice(question, 1);
+  questions.splice(emojiQ, 1);
 }
-
 start();
 
 function genQ() {
@@ -57,19 +39,20 @@ function checkAnswer() {
   if (userInput === answer) {
     score++;
     console.log("correct!");
+  } else if (userInput === "") {
+    console.log("nothing");
   } else {
     console.log("wrong");
   }
+
   console.log(score);
 }
 
 function next() {
   DOMSelectors.userInput.value = "";
   DOMSelectors.emojiDisplay.innerHTML = "";
+  index++;
   genQ();
-  question.forEach((e) =>
-    DOMSelectors.emojiDisplay.insertAdjacentHTML("afterbegin", ``)
-  );
 }
 
 function updateScore() {
