@@ -41,6 +41,9 @@ function checkAnswer() {
     score++;
     DOMSelectors.results.innerHTML = "Correct!";
     console.log("correct!");
+    index++;
+    console.log(index);
+    next();
   } else if (userInput === "") {
     console.log("nothing");
   } else {
@@ -50,11 +53,16 @@ function checkAnswer() {
   console.log(score);
 }
 
-/* function next() {
+function next() {
   DOMSelectors.userInput.value = "";
   DOMSelectors.emojiDisplay.innerHTML = "";
-  //genQ();
-} */
+  DOMSelectors.emojiDisplay.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <p id="emojis">${emojiQ}</p>
+    `
+  );
+}
 
 function updateScore() {
   DOMSelectors.score.textContent = `${score}`;

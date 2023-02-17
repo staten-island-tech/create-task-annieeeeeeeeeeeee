@@ -10,14 +10,14 @@ body,
 }
 
 body {
-  background-color: teal;
+  background-color: #fad35c;
 }
 
 #heading {
   font-size: 10rem;
   margin-top: 5rem;
   text-align: center;
-  color: #ffdb59;
+  color: #f28777;
 }
 
 .form {
@@ -27,7 +27,7 @@ body {
   align-items: center;
   height: 30vh;
   padding-bottom: 7rem;
-  padding-top: 5rem;
+  margin-top: 6rem;
 }
 
 #userInput {
@@ -38,12 +38,21 @@ body {
   font-size: 2rem;
   text-align: center;
 }
-
-#guess-btn {
+#submit {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding-bottom: 7rem;
+  margin-top: 2rem;
+}
+
+#guess-btn {
+  text-transform: uppercase;
+  padding: 1.5rem 4rem;
+  font-size: 1rem;
+  border: 1px solid;
+  border-radius: 10rem;
 }
 
 #picture-display {
@@ -62,10 +71,24 @@ body {
 }
 
 #score {
-  font-size: 7rem;
+  font-size: 3rem;
   display: inline-block;
 }
 #score-number {
-  font-size: 7rem;
+  font-size: 3rem;
   display: inline-block;
+}
+
+#score-container {
+  position: absolute;
+  top: 5rem;
+  left: 2rem;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+#results {
+  font-size: 3rem;
+  text-align: center;
 }
