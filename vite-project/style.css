@@ -47,7 +47,7 @@ body {
   margin-top: 2rem;
 }
 
-#guess-btn {
+.button {
   text-transform: uppercase;
   padding: 1.5rem 4rem;
   font-size: 1rem;

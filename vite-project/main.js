@@ -7,7 +7,7 @@ const DOMSelectors = {
   form: document.getElementById("answer-box"),
   score: document.getElementById("score-number"),
   results: document.getElementById("results"),
-  //test: document.getElementById("hi"),
+  skip: document.getElementById("skip-container"),
 };
 
 let score = 0;
@@ -15,14 +15,12 @@ let index = 0;
 let emojiQ = questions[index].emojis;
 let answer = questions[index].answer;
 
-function start() {
-  //next();
+/* function start() {
   displayQuestion();
-
-  //questions.splice(emojiQ, 1);
+  checkAnswer();
 }
 start();
-
+ */
 //displays question
 function displayQuestion() {
   DOMSelectors.emojiDisplay.insertAdjacentHTML(
@@ -33,36 +31,51 @@ function displayQuestion() {
   );
 }
 
+displayQuestion();
+
 //if (user input === answer) , score ++
 //check answer if the user gets the question right, add one to the score
 function checkAnswer() {
   const userInput = DOMSelectors.userInput.value;
+  console.log(userInput);
   if (userInput === answer) {
     score++;
+    index++;
     DOMSelectors.results.innerHTML = "Correct!";
     console.log("correct!");
-    index++;
-    console.log(index);
-    next();
+    //console.log(index);
+    //next();
   } else if (userInput === "") {
     console.log("nothing");
   } else {
     console.log("wrong");
+    DOMSelectors.results.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <p>Oops try again!</p>
+      `
+    );
   }
 
   console.log(score);
 }
 
-function next() {
+//for()
+/* function next() {
   DOMSelectors.userInput.value = "";
   DOMSelectors.emojiDisplay.innerHTML = "";
+  DOMSelectors.results.innerHTML = "";
+  index++;
+  let emojiQ = questions[index].emojis;
+  let answer = questions[index].answer;
   DOMSelectors.emojiDisplay.insertAdjacentHTML(
     "afterbegin",
     `
     <p id="emojis">${emojiQ}</p>
     `
   );
-}
+  console.log(answer);
+} */
 
 function updateScore() {
   DOMSelectors.score.textContent = `${score}`;
@@ -70,7 +83,6 @@ function updateScore() {
 
 DOMSelectors.form.addEventListener("submit", function (e) {
   e.preventDefault();
-  //displayQuestion();
   checkAnswer();
   updateScore();
 });
