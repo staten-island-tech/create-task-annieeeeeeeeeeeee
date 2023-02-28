@@ -8,6 +8,7 @@ const DOMSelectors = {
   score: document.getElementById("score-number"),
   results: document.getElementById("results"),
   skip: document.getElementById("skip-container"),
+  next: document.getElementById("next"),
 };
 
 let score = 0;
@@ -22,6 +23,7 @@ let answer = questions[index].answer;
 start();
  */
 //displays question
+
 function displayQuestion() {
   DOMSelectors.emojiDisplay.insertAdjacentHTML(
     "afterbegin",
@@ -44,7 +46,15 @@ function checkAnswer() {
     DOMSelectors.results.innerHTML = "Correct!";
     console.log("correct!");
     //console.log(index);
-    //next();
+    //insert next btn
+    DOMSelectors.next.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <button id="next-btn" class="button">Next</button>
+      `
+    );
+
+    next();
   } else if (userInput === "") {
     console.log("nothing");
   } else {
@@ -56,8 +66,16 @@ function checkAnswer() {
       `
     );
   }
+}
 
-  console.log(score);
+function next() {
+  DOMSelectors.next.addEventListener("click", function (e) {
+    e.preventDefault();
+    index++;
+    console.log(index);
+    displayQuestion();
+    click();
+  });
 }
 
 //for()
@@ -81,6 +99,7 @@ function updateScore() {
   DOMSelectors.score.textContent = `${score}`;
 }
 
+function click() {}
 DOMSelectors.form.addEventListener("submit", function (e) {
   e.preventDefault();
   checkAnswer();
