@@ -26,13 +26,11 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 30vh;
-  padding-bottom: 7rem;
-  margin-top: 6rem;
 }
 
 #userInput {
-  width: 50rem;
-  height: 5rem;
+  width: 75rem;
+  height: 6.6rem;
   border-style: none;
   border-radius: 2rem;
   font-size: 2rem;
@@ -43,7 +41,6 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 7rem;
   margin-top: 2rem;
 }
 
@@ -55,18 +52,19 @@ body {
   border-radius: 10rem;
 }
 
-#picture-display {
+#display {
   display: flex;
   justify-content: space-around;
   background-color: white;
-  width: 100rem;
+  width: 75rem;
+  height: 25rem;
   margin: auto;
-  border-radius: 20rem;
+  border-radius: 2rem;
   margin-top: 3.5rem;
 }
 #emojis {
-  font-size: 7rem;
-  margin-top: 5rem;
+  font-size: 9rem;
+  margin-top: 5.2rem;
   margin-bottom: 5rem;
 }
 

@@ -2,59 +2,71 @@ import "./style.css";
 import { questions } from "./array.js";
 
 const DOMSelectors = {
-  emojiDisplay: document.getElementById("picture-display"),
+  emojiDisplay: document.getElementById("display"),
   userInput: document.getElementById("userInput"),
   form: document.getElementById("answer-box"),
   score: document.getElementById("score-number"),
   results: document.getElementById("results"),
   skip: document.getElementById("skip-container"),
   next: document.getElementById("next"),
+  guessBtn: document.getElementById("guess-btn"),
 };
 
 let score = 0;
 let index = 0;
-let emojiQ = questions[index].emojis;
+//let currentQuestion = questions[index].emojis;
 let answer = questions[index].answer;
+//nextQuestion();
 
-/* function start() {
-  displayQuestion();
-  checkAnswer();
+DOMSelectors.next.addEventListener("click", function () {
+  index++;
+  console.log(index);
+  nextQuestion();
+  DOMSelectors.next.innerHTML = "";
+  DOMSelectors.guessBtn.disabled = false;
+  //click();
+});
+
+function clearFields() {
+  DOMSelectors.userInput.value = "";
+  DOMSelectors.emojiDisplay.innerHTML = "";
+  DOMSelectors.results.innerHTML = "";
 }
-start();
- */
-//displays question
 
-function displayQuestion() {
+function nextQuestion() {
+  clearFields();
+  displayQuestion(questions[index]);
+}
+
+function displayQuestion(questions) {
   DOMSelectors.emojiDisplay.insertAdjacentHTML(
     "afterbegin",
     `
-    <p id="emojis">${emojiQ}</p>
+    <p id="emojis">${questions.emojis}</p>
     `
   );
 }
 
-displayQuestion();
+//displayQuestion();
 
 //if (user input === answer) , score ++
 //check answer if the user gets the question right, add one to the score
 function checkAnswer() {
   const userInput = DOMSelectors.userInput.value;
   console.log(userInput);
-  if (userInput === answer) {
+  if (userInput === questions[index].answer) {
     score++;
-    index++;
     DOMSelectors.results.innerHTML = "Correct!";
     console.log("correct!");
-    //console.log(index);
-    //insert next btn
+
     DOMSelectors.next.insertAdjacentHTML(
       "afterbegin",
       `
       <button id="next-btn" class="button">Next</button>
       `
     );
-
-    next();
+    DOMSelectors.guessBtn.disabled = true;
+    updateScore();
   } else if (userInput === "") {
     console.log("nothing");
   } else {
@@ -65,19 +77,24 @@ function checkAnswer() {
       <p>Oops try again!</p>
       `
     );
+    DOMSelectors.userInput.value = "";
   }
 }
 
-function next() {
-  DOMSelectors.next.addEventListener("click", function (e) {
-    e.preventDefault();
-    index++;
-    console.log(index);
-    displayQuestion();
-    click();
-  });
+function updateScore() {
+  DOMSelectors.score.textContent = `${score}`;
 }
 
+function submit() {}
+DOMSelectors.form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  checkAnswer();
+});
+submit();
+//function next() {
+
+//}
+//next();
 //for()
 /* function next() {
   DOMSelectors.userInput.value = "";
@@ -94,14 +111,3 @@ function next() {
   );
   console.log(answer);
 } */
-
-function updateScore() {
-  DOMSelectors.score.textContent = `${score}`;
-}
-
-function click() {}
-DOMSelectors.form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  checkAnswer();
-  updateScore();
-});
