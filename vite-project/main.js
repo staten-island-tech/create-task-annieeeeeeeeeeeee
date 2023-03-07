@@ -10,13 +10,11 @@ const DOMSelectors = {
   skip: document.getElementById("skip-container"),
   next: document.getElementById("next"),
   guessBtn: document.getElementById("guess-btn"),
+  emojis: document.getElementById("emojis"),
 };
 
 let score = 0;
 let index = 0;
-//let currentQuestion = questions[index].emojis;
-let answer = questions[index].answer;
-//nextQuestion();
 
 DOMSelectors.next.addEventListener("click", function () {
   index++;
@@ -24,7 +22,6 @@ DOMSelectors.next.addEventListener("click", function () {
   nextQuestion();
   DOMSelectors.next.innerHTML = "";
   DOMSelectors.guessBtn.disabled = false;
-  //click();
 });
 
 function clearFields() {
@@ -46,8 +43,6 @@ function displayQuestion(questions) {
     `
   );
 }
-
-//displayQuestion();
 
 //if (user input === answer) , score ++
 //check answer if the user gets the question right, add one to the score
@@ -71,12 +66,7 @@ function checkAnswer() {
     console.log("nothing");
   } else {
     console.log("wrong");
-    DOMSelectors.results.insertAdjacentHTML(
-      "afterbegin",
-      `
-      <p>Oops try again!</p>
-      `
-    );
+    DOMSelectors.results.innerHTML = "Oops try again!";
     DOMSelectors.userInput.value = "";
   }
 }
@@ -91,23 +81,3 @@ DOMSelectors.form.addEventListener("submit", function (e) {
   checkAnswer();
 });
 submit();
-//function next() {
-
-//}
-//next();
-//for()
-/* function next() {
-  DOMSelectors.userInput.value = "";
-  DOMSelectors.emojiDisplay.innerHTML = "";
-  DOMSelectors.results.innerHTML = "";
-  index++;
-  let emojiQ = questions[index].emojis;
-  let answer = questions[index].answer;
-  DOMSelectors.emojiDisplay.insertAdjacentHTML(
-    "afterbegin",
-    `
-    <p id="emojis">${emojiQ}</p>
-    `
-  );
-  console.log(answer);
-} */
