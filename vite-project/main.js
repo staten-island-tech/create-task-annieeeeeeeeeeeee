@@ -15,24 +15,24 @@ const DOMSelectors = {
 
 let score = 0;
 let index = 0;
+let numOfProblems = questions.length;
+console.log(numOfProblems);
 
 DOMSelectors.next.addEventListener("click", function () {
   index++;
-  console.log(index);
+  //console.log(index);
   nextQuestion();
   DOMSelectors.next.innerHTML = "";
   DOMSelectors.guessBtn.disabled = false;
 });
 
-function clearFields() {
-  DOMSelectors.userInput.value = "";
-  DOMSelectors.emojiDisplay.innerHTML = "";
-  DOMSelectors.results.innerHTML = "";
-}
-
 function nextQuestion() {
-  clearFields();
-  displayQuestion(questions[index]);
+  if (index === questions.length) {
+    console.log("Game over");
+  } else {
+    clearFields();
+    displayQuestion(questions[index]);
+  }
 }
 
 function displayQuestion(questions) {
@@ -43,12 +43,15 @@ function displayQuestion(questions) {
     `
   );
 }
-
+function clearFields() {
+  DOMSelectors.userInput.value = "";
+  DOMSelectors.emojiDisplay.innerHTML = "";
+  DOMSelectors.results.innerHTML = "";
+}
 //if (user input === answer) , score ++
 //check answer if the user gets the question right, add one to the score
-function checkAnswer() {
-  const userInput = DOMSelectors.userInput.value;
-  console.log(userInput);
+
+function checkAnswer(userInput) {
   if (userInput === questions[index].answer) {
     score++;
     DOMSelectors.results.innerHTML = "Correct!";
@@ -62,8 +65,7 @@ function checkAnswer() {
     );
     DOMSelectors.guessBtn.disabled = true;
     updateScore();
-  } else if (userInput === "") {
-    console.log("nothing");
+    DOMSelectors.userInput.value = "";
   } else {
     console.log("wrong");
     DOMSelectors.results.innerHTML = "Oops try again!";
@@ -78,6 +80,12 @@ function updateScore() {
 function submit() {}
 DOMSelectors.form.addEventListener("submit", function (e) {
   e.preventDefault();
-  checkAnswer();
+  let userInput = DOMSelectors.userInput.value;
+  console.log(userInput);
+  checkAnswer(userInput);
 });
 submit();
+
+function endScreen() {
+  DOMSelectors.form.innerHTML = "";
+}
