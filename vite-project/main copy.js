@@ -11,49 +11,37 @@ const DOMSelectors = {
   next: document.getElementById("next"),
   guessBtn: document.getElementById("guess-btn"),
   emojis: document.getElementById("emojis"),
-  form: document.getElementById("answer-box"),
 };
 
-let score = 0;
-let index = 0;
-let numOfProblems = questions.length;
-console.log(numOfProblems);
-
-DOMSelectors.next.addEventListener("click", function () {
-  index++;
-  //console.log(index);
-  nextQuestion();
-  DOMSelectors.next.innerHTML = "";
-  DOMSelectors.guessBtn.disabled = false;
-});
-
-function nextQuestion() {
-  if (index === questions.length) {
-    console.log("Game over");
-  } else {
-    clearFields();
-    displayQuestion(questions[index]);
-  }
-}
-
-function displayQuestion(questions) {
+//for each question
+for (let i = 0; i < questions.length; i++) {
   DOMSelectors.emojiDisplay.insertAdjacentHTML(
     "afterbegin",
     `
-    <p id="emojis">${questions.emojis}</p>
+    <div class="background"><p id="emojis">${questions[i].emojis}</p></div>
+
+    <form>
+        <div class="input">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type Your Guess"
+            required
+          />
+        </div>
+        <div id="submit">
+          <input type="submit" value="Guess" class="button" id="guess-btn" />
+          <div id="next"></div>
+        </div>
+      </form>
+
     `
   );
+  submit();
+  //console.log(questions[i].emojis);
 }
-function clearFields() {
-  DOMSelectors.userInput.value = "";
-  DOMSelectors.emojiDisplay.innerHTML = "";
-  DOMSelectors.results.innerHTML = "";
-}
-//if (user input === answer) , score ++
-//check answer if the user gets the question right, add one to the score
-
-function checkAnswer(input) {
-  if (input === questions[index].answer) {
+function checkAnswer(userInput) {
+  if (userInput === questions[index].answer) {
     score++;
     DOMSelectors.results.innerHTML = "Correct!";
     console.log("correct!");
@@ -85,8 +73,3 @@ DOMSelectors.form.addEventListener("submit", function (e) {
   console.log(userInput);
   checkAnswer(userInput);
 });
-submit();
-
-function endScreen() {
-  DOMSelectors.form.innerHTML = "";
-}

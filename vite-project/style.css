@@ -56,17 +56,26 @@ body {
 #display {
   display: flex;
   justify-content: space-around;
+
+  margin: auto;
   background-color: white;
   width: 75rem;
   height: 25rem;
   margin: auto;
   border-radius: 2rem;
   margin-top: 3.5rem;
+  text-align: center;
+  
 }
+
+/* .background{
+  
+} */
 #emojis {
-  font-size: 9rem;
+  font-size: 5rem;
   margin-top: 5.2rem;
   margin-bottom: 5rem;
+
 }
 
 #score {
